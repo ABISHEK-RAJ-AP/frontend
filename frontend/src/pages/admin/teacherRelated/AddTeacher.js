@@ -14,7 +14,7 @@ const AddTeacher = () => {
 
   const subjectID = params.id
 
-  const { status, response, error } = useSelector(state => state.user);
+  const { status, response } = useSelector(state => state.user);
   const { subjectDetails } = useSelector((state) => state.sclass);
 
   useEffect(() => {
@@ -52,12 +52,7 @@ const AddTeacher = () => {
       setShowPopup(true)
       setLoader(false)
     }
-    else if (status === 'error') {
-      setMessage("Network Error")
-      setShowPopup(true)
-      setLoader(false)
-    }
-  }, [status, navigate, error, response, dispatch]);
+  }, [status, navigate, response, dispatch]);
 
   return (
     <div>
