@@ -14,7 +14,7 @@ const SubjectForm = () => {
     const params = useParams()
 
     const userState = useSelector(state => state.user);
-    const { status, currentUser, response, error } = userState;
+    const { status, currentUser, response } = userState;
 
     const sclassName = params.id
     const adminID = currentUser._id
@@ -79,12 +79,7 @@ const SubjectForm = () => {
             setShowPopup(true)
             setLoader(false)
         }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
-        }
-    }, [status, navigate, error, response, dispatch]);
+    }, [status, navigate, response, dispatch]);
 
     return (
         <form onSubmit={submitHandler}>

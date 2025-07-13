@@ -19,12 +19,16 @@ const StudentHomePage = () => {
 
     const [subjectAttendance, setSubjectAttendance] = useState([]);
 
-    const classID = currentUser.sclassName._id
+    const classID = currentUser?.sclassName?._id;
 
     useEffect(() => {
-        dispatch(getUserDetails(currentUser._id, "Student"));
-        dispatch(getSubjectList(classID, "ClassSubjects"));
-    }, [dispatch, currentUser._id, classID]);
+        if (currentUser) {
+            dispatch(getUserDetails(currentUser._id, "Student"));
+        }
+        if (classID) {
+            dispatch(getSubjectList(classID, "ClassSubjects"));
+        }
+    }, [dispatch, currentUser, classID]);
 
     const numberOfSubjects = subjectsList && subjectsList.length;
 
@@ -130,7 +134,4 @@ const Data = styled(CountUp)`
   font-size: calc(1.3rem + .6vw);
   color: green;
 `;
-
-
-
-export default StudentHomePage
+export default StudentHomePage;

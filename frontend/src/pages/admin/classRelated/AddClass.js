@@ -16,7 +16,7 @@ const AddClass = () => {
     const navigate = useNavigate()
 
     const userState = useSelector(state => state.user);
-    const { status, currentUser, response, error, tempDetails } = userState;
+    const { status, currentUser, response, tempDetails } = userState;
 
     const adminID = currentUser._id
     const address = "Sclass"
@@ -47,12 +47,7 @@ const AddClass = () => {
             setShowPopup(true)
             setLoader(false)
         }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
-        }
-    }, [status, navigate, error, response, dispatch, tempDetails]);
+    }, [status, navigate, response, dispatch, tempDetails]);
     return (
         <>
             <StyledContainer>
