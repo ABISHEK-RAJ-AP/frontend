@@ -58,4 +58,4 @@ const TeacherSideBar = () => {
     )
 }
 
-export default TeacherSideBar
+export default TeacherSideBar;
