@@ -16,7 +16,7 @@ const ShowNotices = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const { noticesList, loading, error, response } = useSelector((state) => state.notice);
+    const { noticesList, loading, error } = useSelector((state) => state.notice);
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
@@ -74,27 +74,18 @@ const ShowNotices = () => {
 
     return (
         <>
-            {loading ?
+            {loading ? (
                 <div>Loading...</div>
-                :
-                <>
-                    {response ?
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained"
-                                onClick={() => navigate("/Admin/addnotice")}>
-                                Add Notice
-                            </GreenButton>
-                        </Box>
-                        :
-                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                            {Array.isArray(noticesList) && noticesList.length > 0 &&
-                                <TableTemplate buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
-                            }
-                            <SpeedDialTemplate actions={actions} />
-                        </Paper>
-                    }
-                </>
-            }
+            ) : (
+                <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                    {Array.isArray(noticesList) && noticesList.length > 0 ? (
+                        <TableTemplate buttonHaver={NoticeButtonHaver} columns={noticeColumns} rows={noticeRows} />
+                    ) : (
+                        <Box p={2}>No items to show</Box>
+                    )}
+                    <SpeedDialTemplate actions={actions} />
+                </Paper>
+            )}
         </>
     );
 };

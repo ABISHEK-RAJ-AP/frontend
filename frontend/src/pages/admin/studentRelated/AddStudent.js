@@ -77,12 +77,7 @@ const AddStudent = ({ situation }) => {
             setShowPopup(true)
             setLoader(false)
         }
-        else if (status === 'error') {
-            setMessage("Network Error")
-            setShowPopup(true)
-            setLoader(false)
-        }
-    }, [status, navigate, error, response, dispatch]);
+    }, [status, navigate, response, dispatch]);
 
     return (
         <>

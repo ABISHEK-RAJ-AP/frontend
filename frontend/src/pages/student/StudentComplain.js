@@ -11,7 +11,7 @@ const StudentComplain = () => {
 
     const dispatch = useDispatch()
 
-    const { status, currentUser, error } = useSelector(state => state.user);
+    const { status, currentUser } = useSelector(state => state.user);
 
     const user = currentUser._id
     const school = currentUser.school._id
@@ -40,12 +40,7 @@ const StudentComplain = () => {
             setShowPopup(true)
             setMessage("Done Successfully")
         }
-        else if (error) {
-            setLoader(false)
-            setShowPopup(true)
-            setMessage("Network Error")
-        }
-    }, [status, error])
+    }, [status])
 
     return (
         <>

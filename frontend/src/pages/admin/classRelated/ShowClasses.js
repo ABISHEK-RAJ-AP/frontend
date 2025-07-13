@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip } from '@mui/material';
+import { IconButton, Box, Menu, MenuItem, ListItemIcon, Tooltip, Paper } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,7 @@ const ShowClasses = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
 
-  const { sclassesList, loading, error, getresponse } = useSelector((state) => state.sclass);
+  const { sclassesList, loading, error } = useSelector((state) => state.sclass);
   const { currentUser } = useSelector(state => state.user)
 
   const adminID = currentUser._id
@@ -144,25 +144,18 @@ const ShowClasses = () => {
 
   return (
     <>
-      {loading ?
+      {loading ? (
         <div>Loading...</div>
-        :
-        <>
-          {getresponse ?
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              <GreenButton variant="contained" onClick={() => navigate("/Admin/addclass")}>
-                Add Class
-              </GreenButton>
-            </Box>
-            :
-            <>
-              {Array.isArray(sclassesList) && sclassesList.length > 0 &&
-                <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
-              }
-              <SpeedDialTemplate actions={actions} />
-            </>}
-        </>
-      }
+      ) : (
+        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+          {Array.isArray(sclassesList) && sclassesList.length > 0 ? (
+            <TableTemplate buttonHaver={SclassButtonHaver} columns={sclassColumns} rows={sclassRows} />
+          ) : (
+            <Box p={2}>No items to show</Box>
+          )}
+          <SpeedDialTemplate actions={actions} />
+        </Paper>
+      )}
       <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
 
     </>
