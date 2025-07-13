@@ -25,7 +25,6 @@ import { ROLES } from './roles';
 
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
-
   const authRoles = ROLES.filter(r => r !== 'Guest');
 
   const dashboards = {
@@ -46,21 +45,30 @@ const App = () => {
 
   return (
     <Router>
+      {/* show header/footer only when not logged in */}
       {currentRole === null && <Header />}
+
       {currentRole === null ? (
+        /* login & registration routes */
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/choose" element={<ChooseUser visitor="normal" />} />
           <Route path="/chooseasguest" element={<ChooseUser visitor="guest" />} />
           {authRoles.map(role => (
-            <Route key={role} path={`/${role}login`} element={<LoginPage role={role} />} />
+            <Route
+              key={role}
+              path={`/${role}login`}
+              element={<LoginPage role={role} />}
+            />
           ))}
           <Route path="/Adminregister" element={<AdminRegisterPage />} />
-          <Route path='*' element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       ) : (
+        /* dashboard for authenticated users */
         dashboards[currentRole] || <PlaceholderDashboard role={currentRole} />
       )}
+
       {currentRole === null && <Footer />}
     </Router>
   );
