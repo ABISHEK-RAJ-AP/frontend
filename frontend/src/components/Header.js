@@ -1,9 +1,12 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import AccountMenu from './AccountMenu';
 
 const Header = () => {
+  const { currentUser } = useSelector(state => state.user);
+
   return (
     <AppBar position="static" color="primary">
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -13,7 +16,7 @@ const Header = () => {
             Training Centre Management System
           </Typography>
         </Box>
-        <AccountMenu />
+        {currentUser && <AccountMenu />}
       </Toolbar>
     </AppBar>
   );
