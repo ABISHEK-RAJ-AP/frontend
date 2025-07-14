@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const CentreHeadDashboard = () => <GenericDashboard role="CentreHead" />;
+const CentreHeadDashboard = () => <PlaceholderDashboard role="CentreHead" />;
 
 export default CentreHeadDashboard;

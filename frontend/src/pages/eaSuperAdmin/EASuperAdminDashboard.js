@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const EASuperAdminDashboard = () => <GenericDashboard role="EASuperAdmin" />;
+const EASuperAdminDashboard = () => <PlaceholderDashboard role="EASuperAdmin" />;
 
 export default EASuperAdminDashboard;

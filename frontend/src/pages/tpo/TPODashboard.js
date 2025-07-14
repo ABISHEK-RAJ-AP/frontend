@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const TPODashboard = () => <GenericDashboard role="TPO" />;
+const TPODashboard = () => <PlaceholderDashboard role="TPO" />;
 
 export default TPODashboard;

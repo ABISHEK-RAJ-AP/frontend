@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const FinanceDashboard = () => <GenericDashboard role="Finance" />;
+const FinanceDashboard = () => <PlaceholderDashboard role="Finance" />;
 
 export default FinanceDashboard;

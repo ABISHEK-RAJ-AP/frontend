@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const RecruiterDashboard = () => <GenericDashboard role="Recruiter" />;
+const RecruiterDashboard = () => <PlaceholderDashboard role="Recruiter" />;
 
 export default RecruiterDashboard;

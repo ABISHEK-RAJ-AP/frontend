@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const CoordinatorDashboard = () => <GenericDashboard role="Coordinator" />;
+const CoordinatorDashboard = () => <PlaceholderDashboard role="Coordinator" />;
 
 export default CoordinatorDashboard;

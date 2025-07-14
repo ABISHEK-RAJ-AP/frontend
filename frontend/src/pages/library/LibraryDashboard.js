@@ -1,6 +1,6 @@
 import React from 'react';
-import GenericDashboard from '../common/GenericDashboard';
+import PlaceholderDashboard from '../common/PlaceholderDashboard';
 
-const LibraryDashboard = () => <GenericDashboard role="Library" />;
+const LibraryDashboard = () => <PlaceholderDashboard role="Library" />;
 
 export default LibraryDashboard;
