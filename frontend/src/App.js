@@ -45,11 +45,9 @@ const App = () => {
 
   return (
     <Router>
-      {/* show header/footer only when not logged in */}
       {currentRole === null && <Header />}
 
       {currentRole === null ? (
-        /* login & registration routes */
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/choose" element={<ChooseUser visitor="normal" />} />
@@ -65,7 +63,6 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       ) : (
-        /* dashboard for authenticated users */
         dashboards[currentRole] || <PlaceholderDashboard role={currentRole} />
       )}
 

@@ -82,7 +82,6 @@ const StyledTitle = styled.h1`
   font-size: 3rem;
   color: #252525;
   font-weight: bold;
-  padding-top: 0;
   line-height: normal;
 `;
 

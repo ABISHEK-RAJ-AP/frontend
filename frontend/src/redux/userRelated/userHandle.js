@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   authRequest,
   stuffAdded,
@@ -15,7 +16,6 @@ import {
 // Login (dummy data)
 export const loginUser = (fields, role) => async (dispatch) => {
   dispatch(authRequest());
-  // Dummy user payload (with both school and class info)
   const dummy = {
     _id: '1',
     name: 'Demo User',
@@ -59,10 +59,19 @@ export const getUserDetails = (id, address) => async (dispatch) => {
   dispatch(doneSuccess(dummy));
 };
 
-// Disabled delete
+// Delete user (example axios call; adjust as needed)
 export const deleteUser = (id, address) => async (dispatch) => {
   dispatch(getRequest());
-  dispatch(getFailed('Sorry, the delete function has been disabled for now.'));
+  try {
+    const result = await axios.delete(`${process.env.REACT_APP_BASE_URL}/${address}/${id}`);
+    if (result.data.message) {
+      dispatch(getFailed(result.data.message));
+    } else {
+      dispatch(getDeleteSuccess());
+    }
+  } catch (error) {
+    dispatch(getError(error.toString()));
+  }
 };
 
 // Update user (dummy)
