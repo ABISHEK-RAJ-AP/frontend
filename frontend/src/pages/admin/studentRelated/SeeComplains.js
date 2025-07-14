@@ -9,7 +9,7 @@ import TableTemplate from '../../../components/TableTemplate';
 const SeeComplains = () => {
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };  const dispatch = useDispatch();
-  const { complainsList, loading, error, response } = useSelector((state) => state.complain);
+  const { complainsList, loading, error } = useSelector((state) => state.complain);
   const { currentUser } = useSelector(state => state.user)
 
   useEffect(() => {
@@ -47,23 +47,17 @@ const SeeComplains = () => {
 
   return (
     <>
-      {loading ?
+      {loading ? (
         <div>Loading...</div>
-        :
-        <>
-          {response ?
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-              No Complains Right Now
-            </Box>
-            :
-            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-              {Array.isArray(complainsList) && complainsList.length > 0 &&
-                <TableTemplate buttonHaver={ComplainButtonHaver} columns={complainColumns} rows={complainRows} />
-              }
-            </Paper>
-          }
-        </>
-      }
+      ) : (
+        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+          {Array.isArray(complainsList) && complainsList.length > 0 ? (
+            <TableTemplate buttonHaver={ComplainButtonHaver} columns={complainColumns} rows={complainRows} />
+          ) : (
+            <Box p={2}>No items to show</Box>
+          )}
+        </Paper>
+      )}
     </>
   );
 };

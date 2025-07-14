@@ -61,4 +61,4 @@ const StudentSideBar = () => {
     )
 }
 
-export default StudentSideBar
+export default StudentSideBar;

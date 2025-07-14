@@ -16,7 +16,7 @@ import Popup from '../../../components/Popup';
 const ShowSubjects = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const { subjectsList, loading, error, response } = useSelector((state) => state.sclass);
+    const { subjectsList, loading, error } = useSelector((state) => state.sclass);
     const { currentUser } = useSelector(state => state.user)
 
     useEffect(() => {
@@ -85,27 +85,18 @@ const ShowSubjects = () => {
 
     return (
         <>
-            {loading ?
+            {loading ? (
                 <div>Loading...</div>
-                :
-                <>
-                    {response ?
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                            <GreenButton variant="contained"
-                                onClick={() => navigate("/Admin/subjects/chooseclass")}>
-                                Add Subjects
-                            </GreenButton>
-                        </Box>
-                        :
-                        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                            {Array.isArray(subjectsList) && subjectsList.length > 0 &&
-                                <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
-                            }
-                            <SpeedDialTemplate actions={actions} />
-                        </Paper>
-                    }
-                </>
-            }
+            ) : (
+                <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                    {Array.isArray(subjectsList) && subjectsList.length > 0 ? (
+                        <TableTemplate buttonHaver={SubjectsButtonHaver} columns={subjectColumns} rows={subjectRows} />
+                    ) : (
+                        <Box p={2}>No items to show</Box>
+                    )}
+                    <SpeedDialTemplate actions={actions} />
+                </Paper>
+            )}
             <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} />
 
         </>

@@ -50,7 +50,7 @@ const AdminProfile = () => {
             <br />
             Email: {currentUser.email}
             <br />
-            School: {currentUser.schoolName}
+            TCMS: {currentUser.schoolName}
             <br />
             {/* <Button variant="contained" color="error" onClick={deleteHandler}>Delete</Button> */}
             {/* <Button variant="contained" sx={styles.showButton}
@@ -67,8 +67,8 @@ const AdminProfile = () => {
                             onChange={(event) => setName(event.target.value)}
                             autoComplete="name" required />
 
-                        <label>School</label>
-                        <input className="registerInput" type="text" placeholder="Enter your school name..."
+                        <label>TCMS</label>
+                        <input className="registerInput" type="text" placeholder="Enter your TCMS name..."
                             value={schoolName}
                             onChange={(event) => setSchoolName(event.target.value)}
                             autoComplete="name" required />
